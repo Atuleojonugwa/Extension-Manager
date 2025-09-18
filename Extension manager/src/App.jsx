@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-// import logo from "./assets/logo.svg";
 import sun from "./assets/icon-sun.svg";
 import moon from "./assets/icon-moon.svg";
 import ExtensionList from "./Components/ExtensionList";
