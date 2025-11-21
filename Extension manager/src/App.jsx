@@ -1,4 +1,5 @@
 import "./App.css";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import sun from "./assets/icon-sun.svg";
 import moon from "./assets/icon-moon.svg";
@@ -140,20 +141,35 @@ function App() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 mx-[100px] gap-3">
-        {activeExtensions.map((extension) => (
-          <ExtensionList
-            key={extension.id}
-            image={extension.logo}
-            title={extension.name}
-            description={extension.description}
-            isActive={extension.isActive}
-            onToggle={() => toggleExtension(extension.id)}
-            onRemove={() => removeExtension(extension.id)}
-            darkMode={darkMode}
-          />
-        ))}
-      </div>
+      <motion.div 
+        layout
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 mx-[100px] gap-3"
+      >
+        <AnimatePresence mode="popLayout">
+          {activeExtensions.map((extension) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              key={extension.id} 
+              className="h-full"
+            >
+              <ExtensionList
+                image={extension.logo}
+                title={extension.name}
+                description={extension.description}
+                isActive={extension.isActive}
+                onToggle={() => toggleExtension(extension.id)}
+                onRemove={() => removeExtension(extension.id)}
+                darkMode={darkMode}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
     </div>
   );
 }

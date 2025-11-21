@@ -2,7 +2,7 @@ export default function ExtensionList({ image, title, description, isActive, onT
   return (
     <>
       <div
-        className={`p-5 rounded-2xl flex flex-col border-2 ${
+        className={`p-5 rounded-2xl flex flex-col border-2 h-full ${
           darkMode
             ? "bg-[#1F2535] border-[#52596F]"
             : "bg-[#FCFDFF] border-[#E5E7EB] shadow-[0_4px_20px_hsl(0,0%,78%,0.3)] "
