@@ -61,9 +61,14 @@ function App() {
   }
 
   return (
-    <div className="m-0 p-0 box-border">
+    <div className="m-0 p-0 box-border min-h-screen">
+      
+      {/* NAVBAR */}
       <nav
-        className={`flex items-center mx-[100px] my-8 justify-between 
+        className={`flex items-center justify-between 
+                /* RESPONSIVE MARGINS & PADDING */
+                mx-5 md:mx-10 lg:mx-[100px] 
+                my-6 md:my-8
                 ${
                   darkMode
                     ? "bg-[#1F2535] text-white"
@@ -85,7 +90,8 @@ function App() {
         </button>
       </nav>
 
-      <div className="mt-14 mx-[100px] flex items-center justify-between">
+      {/* HEADER SECTION (Title + Filters) */}
+      <div className="mt-10 md:mt-14 mx-5 md:mx-10 lg:mx-[100px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <h1
           className={`text-2xl font-semibold ${
             darkMode ? "text-white" : "text-black"
@@ -93,14 +99,14 @@ function App() {
         >
           Extensions List
         </h1>
-        <div className="flex gap-3">
+        
+        {/* FILTER BUTTONS WRAPPER */}
+        <div className="flex flex-wrap gap-2 md:gap-3">
           <button
             onClick={showAll}
-            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer ${
+            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer transition-colors ${
               filter === "all"
-                ? darkMode
-                  ? "bg-[#C7231A] text-white"
-                  : "bg-[#C7231A] text-white"
+                ? "bg-[#C7231A] text-white"
                 : darkMode
                 ? "bg-[#2F354B] border-2 border-[#52596F] text-white"
                 : "bg-[#FAFCFD] border-2 border-[#D1D5DB] text-black"
@@ -111,11 +117,9 @@ function App() {
 
           <button
             onClick={active}
-            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer ${
+            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer transition-colors ${
               filter === "active"
-                ? darkMode
-                  ? "bg-[#C7231A] text-white"
-                  : "bg-[#C7231A] text-white"
+                ? "bg-[#C7231A] text-white"
                 : darkMode
                 ? "bg-[#2F354B] border-2 border-[#52596F] text-white"
                 : "bg-[#FAFCFD] border-2 border-[#D1D5DB] text-black"
@@ -126,11 +130,9 @@ function App() {
 
           <button
             onClick={inActive}
-            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer ${
+            className={`px-5 py-[5px] rounded-[30px] font-medium shadow-sm cursor-pointer transition-colors ${
               filter === "inactive"
-                ? darkMode
-                  ? "bg-[#C7231A] text-white"
-                  : "bg-[#C7231A] text-white"
+                ? "bg-[#C7231A] text-white"
                 : darkMode
                 ? "bg-[#2F354B] border-2 border-[#52596F] text-white"
                 : "bg-[#FAFCFD] border-2 border-[#D1D5DB] text-black"
@@ -141,9 +143,10 @@ function App() {
         </div>
       </div>
 
+      {/* GRID SECTION */}
       <motion.div 
         layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 mx-[100px] gap-3"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 mx-5 md:mx-10 lg:mx-[100px] gap-3 pb-10"
       >
         <AnimatePresence mode="popLayout">
           {activeExtensions.map((extension) => (
